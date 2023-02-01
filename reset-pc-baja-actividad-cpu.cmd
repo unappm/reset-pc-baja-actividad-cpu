@@ -14,15 +14,15 @@ wmic cpu get loadpercentage /value
   )
 
 
-  if !CPULoad%! LSS 10 (
+  if !CPULoad%! LSS 3 (
 
     if !reset! == 0 (
-      echo Uso de CPU por debajo del 10%. Reiniciando sistema en una hora...
+      echo Uso de CPU por debajo del 3%. Reiniciando sistema en una hora...
       shutdown /r /t 3600
       set /a reset=1
 
     ) else (
-      echo Uso de CPU aun por debajo del 10%. Se reiniciara el sistema...
+      echo Uso de CPU aun por debajo del 3%. Se reiniciara el sistema...
 
     )
 
@@ -30,11 +30,11 @@ wmic cpu get loadpercentage /value
     
     if !reset! == 1 (
       shutdown /a
-      echo Uso de CPU por encima del 10%. Reinicio cancelado.
+      echo Uso de CPU por encima del 3%. Reinicio cancelado.
       set /a reset=0
 
     ) else (
-      echo Uso de CPU por encima del 10%. No se realizan acciones
+      echo Uso de CPU por encima del 3%. No se realizan acciones
 
     )
 
